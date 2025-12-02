@@ -1,0 +1,32 @@
+{
+  "name": "Lean_Case_Study",
+  "version": "1.0.0",
+  "description": "Playwright E2E test automation for Saucedemo website - Automated testing of product purchase workflow",
+  "main": "index.js",
+
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:report": "playwright show-report"
+  },
+
+  "keywords": [
+    "playwright",
+    "e2e-testing",
+    "automation",
+    "saucedemo"
+  ],
+
+  "author": "Altaf Shaikh",
+  "license": "ISC",
+  "type": "commonjs",
+
+  "dependencies": {
+    "playwright": "^1.57.0"
+  },
+
+  "devDependencies": {
+    "@playwright/test": "^1.57.0"
+  }
+}
+
