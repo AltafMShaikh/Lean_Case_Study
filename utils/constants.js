@@ -4,6 +4,7 @@
  */
 
 const CONSTANTS = {
+
     // Base URLs
     BASE_URL: 'https://www.saucedemo.com/',
 
@@ -16,6 +17,7 @@ const CONSTANTS = {
 
     // Locators - Login Page
     LOCATORS: {
+
         LOGIN: {
             USERNAME_INPUT: '#user-name',
             PASSWORD_INPUT: '#password',
@@ -84,5 +86,5 @@ const CONSTANTS = {
     }
 };
 
-module.exports = CONSTANTS;
 
+module.exports = CONSTANTS;
