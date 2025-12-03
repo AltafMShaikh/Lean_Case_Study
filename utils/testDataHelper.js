@@ -9,6 +9,7 @@ const fs = require('fs');
 // Import Node.js path module to handle file paths
 const path = require('path');
 
+
 // TestDataHelper class - manages loading and accessing test data
 class TestDataHelper {
 
@@ -21,6 +22,7 @@ class TestDataHelper {
         this.testData = JSON.parse(fs.readFileSync(testDataPath, 'utf-8'));
     }
 
+
     /**
      * Get valid user credentials for login
      * @returns {Object} Object containing username and password
@@ -29,6 +31,7 @@ class TestDataHelper {
         // Return the validUser credentials from loaded test data
         return this.testData.credentials.validUser;
     }
+
 
     /**
      * Get locked user credentials (for negative testing)
@@ -39,6 +42,7 @@ class TestDataHelper {
         return this.testData.credentials.lockedUser;
     }
 
+
     /**
      * Get problem user credentials (for testing edge cases)
      * @returns {Object} Object containing username and password
@@ -47,6 +51,7 @@ class TestDataHelper {
         // Return the problemUser credentials from loaded test data
         return this.testData.credentials.problemUser;
     }
+
 
     /**
      * Get customer information for checkout
@@ -57,6 +62,7 @@ class TestDataHelper {
         return this.testData.customerInfo.validCustomer;
     }
 
+
     /**
      * Get all available credentials
      * @returns {Object} Object containing all credential types
@@ -65,6 +71,7 @@ class TestDataHelper {
         // Return the entire credentials object from loaded test data
         return this.testData.credentials;
     }
+
 
     /**
      * Get product names
@@ -75,6 +82,7 @@ class TestDataHelper {
         return this.testData.products;
     }
 }
+
 
 // Export the TestDataHelper class for use in tests
 module.exports = TestDataHelper;
