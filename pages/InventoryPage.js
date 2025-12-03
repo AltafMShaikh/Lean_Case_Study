@@ -6,6 +6,7 @@
 // Import constants to access locators (no hardcoded selectors)
 const CONSTANTS = require('../utils/constants');
 
+
 // InventoryPage class - manages product page interactions
 class InventoryPage {
 
@@ -15,6 +16,7 @@ class InventoryPage {
         this.page = page;
     }
 
+
     /**
      * Get all "Add to Cart" buttons on the inventory page
      * @returns {Promise<Array>} Array of all Add to Cart button elements
@@ -23,6 +25,7 @@ class InventoryPage {
         // Locate all "Add to Cart" buttons using selector from constants and return as array
         return await this.page.locator(CONSTANTS.LOCATORS.INVENTORY.ADD_TO_CART_BUTTON).all();
     }
+
 
     /**
      * Add random products to cart
@@ -45,6 +48,7 @@ class InventoryPage {
         // Return the indexes that were selected (useful for tracking)
         return randomIndexes;
     }
+
 
     /**
      * Generate random unique indexes for product selection
@@ -71,6 +75,7 @@ class InventoryPage {
         return randomIndexes;
     }
 
+
     /**
      * Click on shopping cart icon to navigate to cart page
      */
@@ -78,6 +83,7 @@ class InventoryPage {
         // Locate shopping cart link using selector from constants and click it
         await this.page.locator(CONSTANTS.LOCATORS.INVENTORY.SHOPPING_CART_LINK).click();
     }
+
 
     /**
      * Get the cart badge count (number shown on cart icon)
@@ -94,6 +100,7 @@ class InventoryPage {
         return parseInt(text);
     }
 
+
     /**
      * Add a specific product to cart by its index
      * @param {number} index - The index of the product to add
@@ -106,6 +113,7 @@ class InventoryPage {
         await items[index].click();
     }
 
+
     /**
      * Get all product names displayed on the page
      * @returns {Promise<Array<string>>} Array of all product names
@@ -115,6 +123,7 @@ class InventoryPage {
         return await this.page.locator(CONSTANTS.LOCATORS.INVENTORY.PRODUCT_NAME).allTextContents();
     }
 }
+
 
 // Export the InventoryPage class for use in tests
 module.exports = InventoryPage;
