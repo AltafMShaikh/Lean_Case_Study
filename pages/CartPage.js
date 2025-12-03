@@ -6,6 +6,7 @@
 // Import constants for locators (no hardcoded selectors)
 const CONSTANTS = require('../utils/constants');
 
+
 // CartPage class - manages shopping cart page interactions
 class CartPage {
 
@@ -15,6 +16,7 @@ class CartPage {
         this.page = page;
     }
 
+
     /**
      * Get all cart items currently in the shopping cart
      * @returns {Promise<Array>} Array of all cart item elements
@@ -23,6 +25,7 @@ class CartPage {
         // Locate all cart items using selector from constants and return as array
         return await this.page.locator(CONSTANTS.LOCATORS.CART.CART_ITEM).all();
     }
+
 
     /**
      * Get the count of items in the shopping cart
@@ -36,6 +39,7 @@ class CartPage {
         return items.length;
     }
 
+
     /**
      * Click the checkout button to proceed to checkout
      */
@@ -43,6 +47,7 @@ class CartPage {
         // Locate checkout button using selector from constants and click it
         await this.page.locator(CONSTANTS.LOCATORS.CART.CHECKOUT_BUTTON).click();
     }
+
 
     /**
      * Click continue shopping button to return to products page
@@ -52,6 +57,7 @@ class CartPage {
         await this.page.locator(CONSTANTS.LOCATORS.CART.CONTINUE_SHOPPING).click();
     }
 
+
     /**
      * Get all cart item names
      * @returns {Promise<Array<string>>} Array of all item names in cart
@@ -60,6 +66,7 @@ class CartPage {
         // Locate all cart item name elements and return their text contents as array
         return await this.page.locator(CONSTANTS.LOCATORS.CART.CART_ITEM_NAME).allTextContents();
     }
+
 
     /**
      * Remove an item from cart by its index
@@ -73,6 +80,7 @@ class CartPage {
         await removeButtons[index].click();
     }
 }
+
 
 // Export the CartPage class for use in tests
 module.exports = CartPage;
