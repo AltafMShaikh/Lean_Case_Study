@@ -2,7 +2,7 @@
 
 ## Framework Overview
 
-This is a **clean, structured Playwright test automation framework** designed for the Saucedemo website. The framework follows industry best practices and **does not use advanced features like fixtures**
+This is a **clean, structured Playwright test automation framework** designed for the Saucedemo website. The framework follows industry best practices and **does not use advanced features like fixtures**.
 
 ## Framework Architecture
 
@@ -42,10 +42,13 @@ Lean_Case_Study/
 │   └── order-confirmation.png     # Auto-generated screenshots
 │
 ├── playwright-report/             # HTML test reports
+│   └── index.html                 # Test execution report
+│
 ├── test-results/                  # Test execution results
+│   └── results.json               # JSON test results
 │
 ├── playwright.config.js           # Playwright configuration
-├── package.json                   # Dependencies
+├── package.json                   # Dependencies and scripts
 └── README.md                      # This file
 ```
 
