@@ -1,314 +1,282 @@
-# Playwright E2E Testing Project - Saucedemo
+# Playwright E2E Test Automation Framework
 
-## 📋 Project Overview
-This project contains automated end-to-end tests for the Saucedemo e-commerce website using Playwright Test framework. The test automates the complete user journey from login to order completion.
+## Framework Overview
 
----
+This is a **clean, structured Playwright test automation framework** designed for the Saucedemo website. The framework follows industry best practices and **does not use advanced features like fixtures** (as per HR requirement).
 
-## 🎯 Test Scenario
-**Test Name:** User can buy 3 random products successfully
+## Framework Architecture
 
-### Test Steps:
-1. **Navigation** - Navigate to https://www.saucedemo.com/
-2. **Login** - Authenticate with valid credentials
-3. **Product Selection** - Randomly select 3 products from the inventory
-4. **Add to Cart** - Add selected products to the shopping cart
-5. **Cart Verification** - Verify that 3 items are in the cart
-6. **Checkout Process** - Complete the checkout form with user details
-7. **Order Completion** - Finish the purchase
-8. **Verification** - Assert successful order completion message
+### ✅ Key Features
+- **Page Object Model (POM)** design pattern
+- **No hardcoded values** - all data externalized
+- **No advanced fixtures** - simple, straightforward approach
+- **Centralized configuration** - constants and locators in one place
+- **Test data management** - JSON-based test data
+- **Reusable page objects** - clean separation of concerns
+- **Clear test structure** - easy to understand and maintain
 
-### Test Credentials:
-- **Username:** `standard_user`
-- **Password:** `secret_sauce`
+### 📁 Framework Structure
 
-### Customer Information:
-- **First Name:** Altaf
-- **Last Name:** Shaikh
-- **Zip Code:** 400088
-
----
-
-## 🛠️ Tech Stack
-- **Node.js** - JavaScript runtime
-- **Playwright** - E2E testing framework (v1.57.0)
-- **@playwright/test** - Playwright test runner
-
----
-
-## 📁 Project Structure
 ```
 Lean_Case_Study/
-├── Test/
-│   └── test.js                 # Main test file
-├── playwright-report/          # HTML report output directory
-│   └── index.html             # Generated HTML report
-├── test-results/              # Test execution artifacts
-├── playwright.config.js       # Playwright configuration
-├── package.json              # Project dependencies
-└── README.md                 # This file
+│
+├── tests/                         # E2E test files
+│   └── e2e-purchase-flow.spec.js  # Complete E2E purchase flow test
+│
+├── pages/                         # Page Object Model classes
+│   ├── LoginPage.js               # Login page interactions
+│   ├── InventoryPage.js           # Product listing page
+│   ├── CartPage.js                # Shopping cart page
+│   ├── CheckoutPage.js            # Checkout information page
+│   ├── CheckoutOverviewPage.js    # Order summary page
+│   └── CheckoutCompletePage.js    # Order confirmation page
+│
+├── utils/                         # Utility classes and helpers
+│   ├── constants.js               # All locators, URLs, messages
+│   └── testDataHelper.js          # Test data loader
+│
+├── test-data/                     # Test data files
+│   └── test-data.json             # Credentials and customer info
+│
+├── screenshots/                   # Test screenshots
+│   └── order-confirmation.png     # Auto-generated screenshots
+│
+├── playwright-report/             # HTML test reports
+├── test-results/                  # Test execution results
+│
+├── playwright.config.js           # Playwright configuration
+├── package.json                   # Dependencies
+└── README.md                      # This file
 ```
 
----
-
-## ⚙️ Configuration Details
-
-### Playwright Configuration (`playwright.config.js`)
-- **Test Directory:** `./Test`
-- **Test Match Pattern:** `**/*.js`
-- **Browser:** Chromium (Desktop Chrome)
-- **Parallel Execution:** Enabled
-- **Retries:** 0 (no retries)
-- **Base URL:** https://www.saucedemo.com/
-- **Reporters:** 
-  - HTML Report (output: `playwright-report/`)
-  - List (console output)
-- **Trace:** On first retry
-- **Screenshot:** Only on failure
-
----
-
-## 🚀 Installation & Setup
+## 🚀 Getting Started
 
 ### Prerequisites
 - Node.js (v14 or higher)
-- npm (Node Package Manager)
+- npm (comes with Node.js)
 
-### Installation Steps
+### Installation
 
-1. **Navigate to project directory:**
-   ```bash
-   cd Path/To/Lean_Case_Study
-   ```
+1. **Install dependencies:**
+```bash
+npm install
+```
 
-2. **Install dependencies:**
-   ```bash
-   npm install Playwright
-   ```
+2. **Install Playwright browsers:**
+```bash
+npx playwright install
+```
 
-3. **Install Playwright browsers:**
-   ```bash
-   npx playwright install chromium
-   ```
+## ▶️ Running Tests
 
----
-
-## 🧪 Running Tests
-
-### Run all tests (Headless mode)
+### Run all tests:
 ```bash
 npm test
 ```
-This runs tests in headless mode (no browser UI visible) and generates an HTML report.
 
-### Run tests in headed mode (Browser visible)
+### Run tests in headed mode (see browser):
 ```bash
 npm run test:headed
 ```
-This opens the browser so you can see the test execution in real-time.
 
-### Run specific test file
+### Run tests in debug mode:
 ```bash
-npx playwright test Test/test.js
+npm run test:debug
 ```
 
-### Run tests in debug mode
+### Run E2E test specifically:
 ```bash
-npx playwright test --debug
-```
-Opens Playwright Inspector for step-by-step debugging.
-
-### Run tests with specific browser
-```bash
-npx playwright test --project=chromium
+npm run test:e2e
 ```
 
----
+### Run tests in specific browser:
+```bash
+npm run test:chrome
+npm run test:firefox
+npm run test:webkit
+```
 
-## 📊 Viewing Test Reports
-
-### Open HTML Report
-After running tests, open the interactive HTML report:
-
+### View test report:
 ```bash
 npm run test:report
 ```
-or
+
+### Clean test artifacts:
 ```bash
-npx playwright show-report
+npm run test:clean
 ```
 
-This will:
-- Start a local server at `http://localhost:9323`
-- Open the report in your default browser
-- Display detailed test results, traces, and screenshots
+## 📋 Test Scenarios
 
-### Report Features:
-- ✅ Pass/Fail status for each test
-- ⏱️ Execution time and performance metrics
-- 📸 Screenshots (captured on failure)
-- 📹 Video recordings (if enabled)
-- 🔍 Detailed step-by-step logs
-- 🐛 Error stack traces (on failures)
+### E2E Purchase Flow Test
+**File:** `tests/e2e-purchase-flow.spec.js`
 
----
+**Test Case:** User can buy 3 random products successfully
 
-## 📝 Test Details
-
-### File: `Test/test.js`
-
-#### Test Flow:
-```javascript
+**Steps:**
 1. Navigate to Saucedemo website
-2. Login with credentials
-3. Get all product "Add to Cart" buttons
-4. Generate 3 random unique indexes
-5. Click "Add to Cart" for 3 random products
-6. Navigate to Shopping Cart
-7. Assert 3 items are in the cart
-8. Click Checkout
-9. Fill in customer information (First Name, Last Name, Zip Code)
-10. Click Continue
-11. Click Finish
-12. Verify success message: "Thank you for your order!"
+2. Login with valid credentials
+3. Add 3 random products to cart
+4. Navigate to shopping cart
+5. Verify cart contains 3 items
+6. Proceed to checkout
+7. Fill checkout information
+8. Complete the order
+9. Verify order success message
+10. Take screenshot of confirmation
+
+**Validations:**
+✓ Cart contains exactly 3 items
+✓ Success header displays: "Thank you for your order!"
+✓ Success message displays: "Your order has been dispatched..."
+✓ Screenshot captured of order confirmation
+
+## 🏗️ Framework Design Principles
+
+### 1. No Hardcoded Values
+- All URLs in `utils/constants.js`
+- All locators in `utils/constants.js`
+- All test data in `test-data/test-data.json`
+- All messages in `utils/constants.js`
+
+### 2. No Advanced Fixtures
+- Simple page object initialization
+- Direct instantiation of classes
+- No custom fixtures or complex setup
+- Straightforward test structure
+
+### 3. Page Object Model
+Each page has its own class with methods:
+- **LoginPage:** Handle login operations
+- **InventoryPage:** Handle product selection
+- **CartPage:** Handle cart operations
+- **CheckoutPage:** Handle checkout form
+- **CheckoutOverviewPage:** Handle order review
+- **CheckoutCompletePage:** Handle confirmation
+
+### 4. Clear Separation of Concerns
+- **pages/:** User interactions
+- **utils/:** Helper functions and data
+- **test-data/:** External test data
+- **tests/:** Test scenarios and assertions
+
+## 📊 Test Data Management
+
+Test data is stored in `test-data/test-data.json`:
+
+```json
+{
+  "credentials": {
+    "validUser": {
+      "username": "standard_user",
+      "password": "secret_sauce"
+    }
+  },
+  "customerInfo": {
+    "validCustomer": {
+      "firstName": "Altaf",
+      "lastName": "Shaikh",
+      "postalCode": "400088"
+    }
+  }
+}
 ```
 
-#### Key Assertions:
-- Cart contains exactly 3 items
-- Success message displays "Thank you for your order!"
+Access test data using `TestDataHelper`:
+```javascript
+const testDataHelper = new TestDataHelper();
+const credentials = testDataHelper.getValidUserCredentials();
+```
 
-#### Locators Used:
-- `#user-name` - Username input field
-- `#password` - Password input field
-- `input[name="login-button"]` - Login button
-- `.inventory_item button` - All "Add to Cart" buttons
-- `a.shopping_cart_link` - Shopping cart link
-- `.cart_item` - Cart items
-- `#checkout` - Checkout button
-- `.complete-header` - Order completion header
+## 🎯 Locator Management
 
----
+All locators are centralized in `utils/constants.js`:
 
-## 🔧 Available NPM Scripts
+```javascript
+LOCATORS: {
+  LOGIN: {
+    USERNAME_INPUT: '#user-name',
+    PASSWORD_INPUT: '#password',
+    LOGIN_BUTTON: 'input[name="login-button"]'
+  }
+}
+```
 
-| Command | Description |
-|---------|-------------|
-| `npm test` | Run all tests in headless mode |
-| `npm run test:headed` | Run tests with browser UI visible |
-| `npm run test:report` | Open the HTML test report |
+## 📸 Screenshots
 
----
+Screenshots are automatically captured:
+- On test failure (automatic)
+- On order confirmation (explicit)
+- Saved to `screenshots/` directory
 
-## 📦 Dependencies
+## 📈 Reporting
 
-### Production Dependencies:
-- `playwright` (v1.57.0)
+After test execution, reports are available:
+- **HTML Report:** `playwright-report/index.html`
+- **JSON Report:** `test-results/results.json`
+- **Console Output:** Real-time test progress
 
-### Development Dependencies:
-- `@playwright/test` (latest)
+## 🔧 Configuration
 
----
+Framework configuration in `playwright.config.js`:
+- Test directory: `./tests`
+- Test pattern: `**/*.spec.js`
+- Base URL: `https://www.saucedemo.com/`
+- Browsers: Chromium, Firefox, WebKit
+- Parallel execution: Enabled
+- Screenshots: On failure
 
-## 🎨 Test Features
+## 📝 Test Execution Flow
 
-### Random Product Selection
-The test implements a smart random selection algorithm:
-- Ensures 3 unique products are selected
-- No duplicate selections
-- Works regardless of total product count
+```
+1. Initialize test data and page objects (no fixtures)
+2. Navigate to application
+3. Perform login
+4. Add products to cart
+5. Navigate through checkout
+6. Verify order completion
+7. Capture screenshot
+8. Generate report
+```
 
-### Robust Selectors
-- Uses reliable CSS selectors and Playwright locators
-- Implements modern Playwright APIs (`getByPlaceholder`, `locator`)
-- Ensures stable test execution
+## ✅ Best Practices Followed
 
-### Comprehensive Assertions
-- Verifies cart count before checkout
-- Validates successful order completion
-- Uses Playwright's built-in assertion library
+1. ✓ Page Object Model implementation
+2. ✓ No hardcoded values
+3. ✓ No advanced fixtures
+4. ✓ Externalized test data
+5. ✓ Centralized locators
+6. ✓ Clear and descriptive method names
+7. ✓ Proper assertions and validations
+8. ✓ Comprehensive logging
+9. ✓ Screenshot capture
+10. ✓ Clean code structure
+11. ✓ Proper naming conventions (kebab-case for files/folders)
 
----
+## 🤝 Contributing
 
-## 🐛 Debugging Tips
+When adding new tests:
+1. Create page objects for new pages in `pages/`
+2. Add locators to `utils/constants.js`
+3. Add test data to `test-data/test-data.json`
+4. Create test files with `.spec.js` suffix in `tests/`
+5. Follow existing naming conventions
+6. Add proper documentation
 
-### If tests fail:
-1. **Run in headed mode** to see what's happening:
-   ```bash
-   npm run test:headed
-   ```
+## 📞 Support
 
-2. **Use debug mode** for step-by-step execution:
-   ```bash
-   npx playwright test --debug
-   ```
+For issues or questions, please refer to:
+- Playwright Documentation: https://playwright.dev
+- Project Issues: Contact the team
 
-3. **Check screenshots** in `test-results/` folder
+## 🎓 Learning Resources
 
-4. **View traces** in the HTML report
-
-5. **Enable video recording** in `playwright.config.js`:
-   ```javascript
-   use: {
-     video: 'on',
-   }
-   ```
-
----
-
-## 📈 Test Results
-
-### Latest Test Execution:
-- ✅ **Status:** PASSED
-- ⏱️ **Duration:** ~3.2 seconds
-- 🌐 **Browser:** Chromium
-- 📅 **Last Run:** December 2, 2025
-
----
-
-## 📞 Support & Contribution
-
-### Author
-- **Name:** Altaf Shaikh
-- **Project:** Lean_Case_Study
-
-### Reporting Issues
-If you encounter any issues:
-1. Check the HTML report for detailed error logs
-2. Review screenshots in `test-results/` folder
-3. Verify browser is installed: `npx playwright install chromium`
+- **Playwright Docs:** https://playwright.dev/docs/intro
+- **Page Object Model:** https://playwright.dev/docs/pom
+- **Best Practices:** https://playwright.dev/docs/best-practices
 
 ---
 
-## 📚 Additional Resources
-
-- [Playwright Documentation](https://playwright.dev/)
-- [Playwright Test API](https://playwright.dev/docs/api/class-test)
-- [Playwright Best Practices](https://playwright.dev/docs/best-practices)
-- [Saucedemo Website](https://www.saucedemo.com/)
-
----
-
-## ✅ Quick Start Checklist
-
-- [ ] Install Node.js
-- [ ] Clone/Download project
-- [ ] Run `npm install`
-- [ ] Run `npm install Playwright`
-- [ ] Run `npx playwright install chromium`
-- [ ] Run `npm test`
-- [ ] View report with `npm run test:report`
-
----
-
-## 🔐 Security Note
-**Important:** The test credentials used in this project are for the public Saucedemo test website only. Never commit real credentials to version control.
-
----
-
-## 📄 License
-This project is for educational and testing purposes.
-
----
-
-**Happy Testing! 🚀**
-
+**Author:** Altaf Shaikh  
+**Framework Version:** 1.0.0  
+**Last Updated:** December 2024

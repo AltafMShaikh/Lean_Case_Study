@@ -13,45 +13,66 @@ const { defineConfig, devices } = require('@playwright/test');
 
 module.exports = defineConfig({
   // Directory where test files are located
-  testDir: './Test',
+  testDir: './tests',
 
-  // Pattern to match test files (all .js files in test directory)
-  testMatch: '**/*.js',
+  // Pattern to match test files
+  testMatch: '**/*.spec.js',
 
   // Enable parallel test execution for faster runs
   fullyParallel: true,
 
-  // Number of times to retry failed tests (0 = no retries)
+  // Fail the build if you accidentally left test.only in the source code
+  forbidOnly: true,
+
+  // Number of times to retry failed tests
   retries: 0,
 
+  // Number of workers - use half of logical CPU cores for parallel execution
+  workers: undefined,
+
   // Configure test reporters
-  // 'html' - generates interactive HTML report in playwright-report folder
-  // 'list' - prints test results to console
   reporter: [
-    ['html', { outputFolder: 'playwright-report' }],
-    ['list']
+    ['html', { outputFolder: 'playwright-report', open: 'never' }],
+    ['list'],
+    ['json', { outputFile: 'test-results/results.json' }]
   ],
 
   // Default options for all tests
   use: {
-    // Base URL for navigation (can use relative paths in tests)
-    baseURL: 'https://www.saucedemo.com/',
+    // Base URL for navigation
+    baseURL: process.env.BASE_URL || 'https://www.saucedemo.com/',
 
-    // Capture trace only when test is retried (for debugging)
+    // Capture trace on first retry for debugging
     trace: 'on-first-retry',
 
-    // Take screenshots only when tests fail
+    // Take screenshots on failure
     screenshot: 'only-on-failure',
+
+    // Browser viewport
+    viewport: { width: 1280, height: 720 },
+
+    // Default timeout for actions
+    actionTimeout: 30000,
+
+    // Default navigation timeout
+    navigationTimeout: 60000,
   },
 
-  // Browser projects to run tests on
+  // Configure projects for major browsers
   projects: [
     {
-      // Project name
       name: 'chromium',
-
-      // Use Desktop Chrome browser configuration
       use: { ...devices['Desktop Chrome'] },
+    },
+
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
+
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
     },
   ],
 });

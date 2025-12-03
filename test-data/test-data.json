@@ -1,0 +1,41 @@
+{
+  "credentials": {
+    "validUser": {
+      "username": "standard_user",
+      "password": "secret_sauce"
+    },
+    "lockedUser": {
+      "username": "locked_out_user",
+      "password": "secret_sauce"
+    },
+    "problemUser": {
+      "username": "problem_user",
+      "password": "secret_sauce"
+    },
+    "performanceUser": {
+      "username": "performance_glitch_user",
+      "password": "secret_sauce"
+    }
+  },
+  "customerInfo": {
+    "validCustomer": {
+      "firstName": "Altaf",
+      "lastName": "Shaikh",
+      "postalCode": "400088"
+    },
+    "anotherCustomer": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "postalCode": "12345"
+    }
+  },
+  "products": {
+    "sauceLabsBackpack": "Sauce Labs Backpack",
+    "sauceLabsBikeLight": "Sauce Labs Bike Light",
+    "sauceLabsBoltTShirt": "Sauce Labs Bolt T-Shirt",
+    "sauceLabsFleeceJacket": "Sauce Labs Fleece Jacket",
+    "sauceLabsOnesie": "Sauce Labs Onesie",
+    "testAllTheThingsTShirt": "Test.allTheThings() T-Shirt (Red)"
+  }
+}
+

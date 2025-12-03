@@ -1,20 +1,29 @@
 {
   "name": "Lean_Case_Study",
   "version": "1.0.0",
-  "description": "Playwright E2E test automation for Saucedemo website - Automated testing of product purchase workflow",
+  "description": "Playwright E2E test automation framework for Saucedemo website - Enterprise-grade automated testing with Page Object Model",
   "main": "index.js",
 
   "scripts": {
     "test": "playwright test",
     "test:headed": "playwright test --headed",
-    "test:report": "playwright show-report"
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:e2e": "playwright test tests/e2e-purchase-flow.spec.js",
+    "test:chrome": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:report": "playwright show-report",
+    "test:clean": "rimraf test-results playwright-report screenshots"
   },
 
   "keywords": [
     "playwright",
     "e2e-testing",
     "automation",
-    "saucedemo"
+    "saucedemo",
+    "page-object-model",
+    "test-framework"
   ],
 
   "author": "Altaf Shaikh",
@@ -26,7 +35,7 @@
   },
 
   "devDependencies": {
-    "@playwright/test": "^1.57.0"
+    "@playwright/test": "^1.57.0",
+    "rimraf": "^5.0.5"
   }
 }
-
