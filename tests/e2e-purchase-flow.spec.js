@@ -30,6 +30,7 @@ const CheckoutCompletePage = require('../pages/CheckoutCompletePage');
 const TestDataHelper = require('../utils/testDataHelper');
 const CONSTANTS = require('../utils/constants');
 
+
 // Define the test suite for E2E purchase flow
 test.describe('E2E Purchase Flow Tests', () => {
 
@@ -57,6 +58,7 @@ test.describe('E2E Purchase Flow Tests', () => {
         const checkoutOverviewPage = new CheckoutOverviewPage(page);
         const checkoutCompletePage = new CheckoutCompletePage(page);
 
+
         // ==========================================
         // Step 1: Navigate to Saucedemo Website
         // ==========================================
@@ -66,6 +68,7 @@ test.describe('E2E Purchase Flow Tests', () => {
 
         // Navigate to the application URL using LoginPage method
         await loginPage.navigate();
+
 
         // ==========================================
         // Step 2: Login with Valid Credentials
@@ -77,6 +80,7 @@ test.describe('E2E Purchase Flow Tests', () => {
         // Perform login using credentials from test data (username and password from JSON)
         await loginPage.login(credentials.username, credentials.password);
 
+
         // ==========================================
         // Step 3: Select and Add Random Products
         // ==========================================
@@ -86,6 +90,7 @@ test.describe('E2E Purchase Flow Tests', () => {
 
         // Add random products to cart - number configured in constants.js (not hardcoded)
         await inventoryPage.addRandomProductsToCart(CONSTANTS.NUMBER_OF_PRODUCTS_TO_BUY);
+
 
         // ==========================================
         // Step 4: Navigate to Shopping Cart
@@ -106,6 +111,7 @@ test.describe('E2E Purchase Flow Tests', () => {
         // Assert that cart contains exactly the expected number of products
         expect(cartItemsCount).toBe(CONSTANTS.NUMBER_OF_PRODUCTS_TO_BUY);
 
+
         // ==========================================
         // Step 5: Proceed to Checkout
         // ==========================================
@@ -115,6 +121,7 @@ test.describe('E2E Purchase Flow Tests', () => {
 
         // Click the checkout button to proceed to checkout form
         await cartPage.clickCheckout();
+
 
         // ==========================================
         // Step 6: Fill Checkout Information
@@ -126,6 +133,7 @@ test.describe('E2E Purchase Flow Tests', () => {
         // Fill and submit checkout form with customer data from test-data.json
         await checkoutPage.completeCheckoutInfo(customerInfo);
 
+
         // ==========================================
         // Step 7: Complete the Order
         // ==========================================
@@ -135,6 +143,7 @@ test.describe('E2E Purchase Flow Tests', () => {
 
         // Click the finish button to complete the purchase
         await checkoutOverviewPage.clickFinish();
+
 
         // ==========================================
         // Step 8: Verify Successful Order Completion
