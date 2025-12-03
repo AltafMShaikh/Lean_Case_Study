@@ -6,6 +6,7 @@
 // Import constants file to access all locators and configuration (no hardcoding)
 const CONSTANTS = require('../utils/constants');
 
+
 // LoginPage class - encapsulates all login page elements and actions
 class LoginPage {
 
@@ -15,6 +16,7 @@ class LoginPage {
         this.page = page;
     }
 
+
     /**
      * Navigate to login page
      */
@@ -22,6 +24,7 @@ class LoginPage {
         // Navigate to the base URL from constants.js (not hardcoded)
         await this.page.goto(CONSTANTS.BASE_URL);
     }
+
 
     /**
      * Enter username into the username input field
@@ -32,6 +35,7 @@ class LoginPage {
         await this.page.locator(CONSTANTS.LOCATORS.LOGIN.USERNAME_INPUT).fill(username);
     }
 
+
     /**
      * Enter password into the password input field
      * @param {string} password - The password to enter
@@ -41,6 +45,7 @@ class LoginPage {
         await this.page.locator(CONSTANTS.LOCATORS.LOGIN.PASSWORD_INPUT).fill(password);
     }
 
+
     /**
      * Click the login button to submit credentials
      */
@@ -48,6 +53,7 @@ class LoginPage {
         // Locate login button using selector from constants and click it
         await this.page.locator(CONSTANTS.LOCATORS.LOGIN.LOGIN_BUTTON).click();
     }
+
 
     /**
      * Complete login flow - high-level method combining all login steps
@@ -65,6 +71,7 @@ class LoginPage {
         await this.clickLoginButton();
     }
 
+
     /**
      * Get error message text displayed on login failure
      * @returns {Promise<string>} The error message text
@@ -74,6 +81,7 @@ class LoginPage {
         return await this.page.locator(CONSTANTS.LOCATORS.LOGIN.ERROR_MESSAGE).textContent();
     }
 }
+
 
 // Export the LoginPage class for use in tests
 module.exports = LoginPage;
