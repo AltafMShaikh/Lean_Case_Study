@@ -2,7 +2,7 @@
 
 ## Framework Overview
 
-This is a **clean, structured Playwright test automation framework** designed for the Saucedemo website. The framework follows industry best practices and **does not use advanced features like fixtures** (as per HR requirement).
+This is a **clean, structured Playwright test automation framework** designed for the Saucedemo website. The framework follows industry best practices and **does not use advanced features like fixtures**
 
 ## Framework Architecture
 
@@ -280,3 +280,4 @@ For issues or questions, please refer to:
 **Author:** Altaf Shaikh  
 **Framework Version:** 1.0.0  
 **Last Updated:** December 2024
+
