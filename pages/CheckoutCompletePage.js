@@ -6,6 +6,7 @@
 // Import constants for locators and messages (no hardcoding)
 const CONSTANTS = require('../utils/constants');
 
+
 // CheckoutCompletePage class - manages order confirmation page
 class CheckoutCompletePage {
 
@@ -14,6 +15,7 @@ class CheckoutCompletePage {
         // Store page instance for use in all methods
         this.page = page;
     }
+
 
     /**
      * Get the success header message from confirmation page
@@ -24,6 +26,7 @@ class CheckoutCompletePage {
         return await this.page.locator(CONSTANTS.LOCATORS.CHECKOUT_COMPLETE.COMPLETE_HEADER).textContent();
     }
 
+
     /**
      * Get the detailed success message text
      * @returns {Promise<string>} The success message text
@@ -33,6 +36,7 @@ class CheckoutCompletePage {
         return await this.page.locator(CONSTANTS.LOCATORS.CHECKOUT_COMPLETE.COMPLETE_TEXT).textContent();
     }
 
+
     /**
      * Click back home button to return to products page
      */
@@ -40,6 +44,7 @@ class CheckoutCompletePage {
         // Locate back home button using selector from constants and click it
         await this.page.locator(CONSTANTS.LOCATORS.CHECKOUT_COMPLETE.BACK_HOME_BUTTON).click();
     }
+
 
     /**
      * Verify that the order was completed successfully
@@ -53,6 +58,7 @@ class CheckoutCompletePage {
         return header === CONSTANTS.MESSAGES.ORDER_SUCCESS;
     }
 
+
     /**
      * Take a screenshot of the confirmation page for evidence
      * @param {string} path - Optional custom path for screenshot (defaults to constant)
@@ -62,6 +68,7 @@ class CheckoutCompletePage {
         await this.page.screenshot({ path: path, fullPage: true });
     }
 }
+
 
 // Export the CheckoutCompletePage class for use in tests
 module.exports = CheckoutCompletePage;
