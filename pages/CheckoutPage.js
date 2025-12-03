@@ -6,6 +6,7 @@
 // Import constants for locators and configuration (no hardcoding)
 const CONSTANTS = require('../utils/constants');
 
+
 // CheckoutPage class - manages checkout information form
 class CheckoutPage {
 
@@ -14,6 +15,7 @@ class CheckoutPage {
         // Store page instance for use in all methods
         this.page = page;
     }
+
 
     /**
      * Enter first name in the checkout form
@@ -24,6 +26,7 @@ class CheckoutPage {
         await this.page.locator(CONSTANTS.LOCATORS.CHECKOUT.FIRST_NAME_INPUT).fill(firstName);
     }
 
+
     /**
      * Enter last name in the checkout form
      * @param {string} lastName - The last name to enter
@@ -32,6 +35,7 @@ class CheckoutPage {
         // Locate last name input using selector from constants and fill with value
         await this.page.locator(CONSTANTS.LOCATORS.CHECKOUT.LAST_NAME_INPUT).fill(lastName);
     }
+
 
     /**
      * Enter postal code in the checkout form
@@ -42,6 +46,7 @@ class CheckoutPage {
         await this.page.locator(CONSTANTS.LOCATORS.CHECKOUT.POSTAL_CODE_INPUT).fill(postalCode);
     }
 
+
     /**
      * Click continue button to proceed to next step
      */
@@ -50,6 +55,7 @@ class CheckoutPage {
         await this.page.locator(CONSTANTS.LOCATORS.CHECKOUT.CONTINUE_BUTTON).click();
     }
 
+
     /**
      * Click cancel button to go back
      */
@@ -57,6 +63,7 @@ class CheckoutPage {
         // Locate cancel button using selector from constants and click it
         await this.page.locator(CONSTANTS.LOCATORS.CHECKOUT.CANCEL_BUTTON).click();
     }
+
 
     /**
      * Fill all checkout information fields
@@ -75,6 +82,7 @@ class CheckoutPage {
         await this.enterPostalCode(postalCode);
     }
 
+
     /**
      * Complete the entire checkout information step
      * @param {Object} customerInfo - Object containing firstName, lastName, postalCode
@@ -91,6 +99,7 @@ class CheckoutPage {
         await this.clickContinue();
     }
 
+
     /**
      * Get error message if validation fails
      * @returns {Promise<string>} The error message text
@@ -100,6 +109,7 @@ class CheckoutPage {
         return await this.page.locator(CONSTANTS.LOCATORS.CHECKOUT.ERROR_MESSAGE).textContent();
     }
 }
+
 
 // Export the CheckoutPage class for use in tests
 module.exports = CheckoutPage;
